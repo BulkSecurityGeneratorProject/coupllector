@@ -1,0 +1,70 @@
+<div>
+    <h2 translate="coupllectorApp.address.home.title">Addresses</h2>
+    <jhi-alert></jhi-alert>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xs-4 no-padding-left">
+                <button class="btn btn-primary" ui-sref="address.new" >
+                    <span class="glyphicon glyphicon-plus"></span>
+                    <span  translate="coupllectorApp.address.home.createLabel">
+                        Create new Address
+                    </span>
+                </button>
+            </div>
+        </div>
+    </div>
+    <br/>
+    <div class="table-responsive">
+        <table class="jh-table table table-striped">
+            <thead>
+                <tr jh-sort="vm.predicate" ascending="vm.reverse" callback="vm.transition()">
+                    <th jh-sort-by="id"><span translate="global.field.id">ID</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="addressLine1"><span translate="coupllectorApp.address.addressLine1">Address Line 1</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="addressLine2"><span translate="coupllectorApp.address.addressLine2">Address Line 2</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="suburb"><span translate="coupllectorApp.address.suburb">Suburb</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="state"><span translate="coupllectorApp.address.state">State</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="postcode"><span translate="coupllectorApp.address.postcode">Postcode</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="country"><span translate="coupllectorApp.address.country">Country</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="address in vm.addresses track by address.id">
+                    <td><a ui-sref="address-detail({id:address.id})">{{address.id}}</a></td>
+                    <td>{{address.addressLine1}}</td>
+                    <td>{{address.addressLine2}}</td>
+                    <td>{{address.suburb}}</td>
+                    <td>{{address.state}}</td>
+                    <td>{{address.postcode}}</td>
+                    <td>{{address.country}}</td>
+                    <td class="text-right">
+                        <div class="btn-group flex-btn-group-container">
+                            <button type="submit"
+                                    ui-sref="address-detail({id:address.id})"
+                                    class="btn btn-info btn-sm">
+                                <span class="glyphicon glyphicon-eye-open"></span>
+                                <span class="hidden-xs hidden-sm" translate="entity.action.view"></span>
+                            </button>
+                            <button type="submit"
+                                    ui-sref="address.edit({id:address.id})"
+                                    class="btn btn-primary btn-sm">
+                                <span class="glyphicon glyphicon-pencil"></span>
+                                <span class="hidden-xs hidden-sm" translate="entity.action.edit"></span>
+                            </button>
+                            <button type="submit"
+                                    ui-sref="address.delete({id:address.id})"
+                                    class="btn btn-danger btn-sm">
+                                <span class="glyphicon glyphicon-remove-circle"></span>
+                                <span class="hidden-xs hidden-sm" translate="entity.action.delete"></span>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="text-center">
+        <jhi-item-count page="vm.page" total="vm.queryCount" items-per-page="vm.itemsPerPage"></jhi-item-count>
+        <uib-pagination class="pagination-sm" total-items="vm.totalItems" ng-model="vm.page" ng-change="vm.transition()"></uib-pagination>
+    </div>
+</div>

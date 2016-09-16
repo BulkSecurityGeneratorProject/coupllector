@@ -1,0 +1,39 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "user",
+            "otherEntityName": "user",
+            "otherEntityField": "id"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "changedDate",
+            "fieldType": "ZonedDateTime"
+        },
+        {
+            "fieldName": "changedValue",
+            "fieldType": "Long"
+        },
+        {
+            "fieldName": "balance",
+            "fieldType": "Long"
+        },
+        {
+            "fieldName": "transaction",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "comment",
+            "fieldType": "String"
+        }
+    ],
+    "changelogDate": "20160916071713",
+    "entityTableName": "reward_point_history",
+    "dto": "mapstruct",
+    "pagination": "pagination",
+    "service": "serviceImpl",
+    "angularSuffix": "cc"
+}

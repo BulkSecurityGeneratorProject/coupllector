@@ -1,0 +1,47 @@
+
+<div>
+    <h2><span translate="coupllectorApp.userProfile.detail.title">User Profile</span> {{vm.userProfile.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="dl-horizontal jh-entity-details">
+        <dt><span translate="coupllectorApp.userProfile.mobile">Mobile</span></dt>
+        <dd>
+            <span>{{vm.userProfile.mobile}}</span>
+        </dd>
+        <dt><span translate="coupllectorApp.userProfile.primaryEmailAddress">Primary Email Address</span></dt>
+        <dd>
+            <span>{{vm.userProfile.primaryEmailAddress}}</span>
+        </dd>
+        <dt><span translate="coupllectorApp.userProfile.alternativeEmailAddress">Alternative Email Address</span></dt>
+        <dd>
+            <span>{{vm.userProfile.alternativeEmailAddress}}</span>
+        </dd>
+        <dt><span translate="coupllectorApp.userProfile.rewardPoints">Reward Points</span></dt>
+        <dd>
+            <span>{{vm.userProfile.rewardPoints}}</span>
+        </dd>
+        <dt><span translate="coupllectorApp.userProfile.user">User</span></dt>
+        <dd>
+            {{vm.userProfile.userId}}
+        </dd>
+        <dt><span translate="coupllectorApp.userProfile.streetAddress">Street Address</span></dt>
+        <dd>
+            <a ui-sref="address-detail({id:vm.userProfile.streetAddressId})">{{vm.userProfile.streetAddressId}}</a>
+        </dd>
+        <dt><span translate="coupllectorApp.userProfile.postalAddress">Postal Address</span></dt>
+        <dd>
+            <a ui-sref="address-detail({id:vm.userProfile.postalAddressId})">{{vm.userProfile.postalAddressId}}</a>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            ui-sref="{{ vm.previousState }}"
+            class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span translate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button" ui-sref="user-profile-detail.edit({id:vm.userProfile.id})" class="btn btn-primary">
+        <span class="glyphicon glyphicon-pencil"></span>
+        <span class="hidden-xs hidden-sm" translate="entity.action.edit"> Edit</span>
+    </button>
+</div>

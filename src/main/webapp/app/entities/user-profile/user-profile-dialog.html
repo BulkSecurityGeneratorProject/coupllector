@@ -1,0 +1,68 @@
+
+<form name="editForm" role="form" novalidate ng-submit="vm.save()">
+
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                ng-click="vm.clear()">&times;</button>
+        <h4 class="modal-title" id="myUserProfileLabel" translate="coupllectorApp.userProfile.home.createOrEditLabel">Create or edit a User Profile</h4>
+    </div>
+    <div class="modal-body">
+        <jhi-alert-error></jhi-alert-error>
+        <div class="form-group" ng-show="vm.userProfile.id">
+            <label for="id" translate="global.field.id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                    ng-model="vm.userProfile.id" readonly />
+        </div>
+        <div class="form-group">
+            <label class="control-label" translate="coupllectorApp.userProfile.mobile" for="field_mobile">Mobile</label>
+            <input type="text" class="form-control" name="mobile" id="field_mobile"
+                    ng-model="vm.userProfile.mobile"
+                     />
+        </div>
+        <div class="form-group">
+            <label class="control-label" translate="coupllectorApp.userProfile.primaryEmailAddress" for="field_primaryEmailAddress">Primary Email Address</label>
+            <input type="text" class="form-control" name="primaryEmailAddress" id="field_primaryEmailAddress"
+                    ng-model="vm.userProfile.primaryEmailAddress"
+                     />
+        </div>
+        <div class="form-group">
+            <label class="control-label" translate="coupllectorApp.userProfile.alternativeEmailAddress" for="field_alternativeEmailAddress">Alternative Email Address</label>
+            <input type="text" class="form-control" name="alternativeEmailAddress" id="field_alternativeEmailAddress"
+                    ng-model="vm.userProfile.alternativeEmailAddress"
+                     />
+        </div>
+        <div class="form-group">
+            <label class="control-label" translate="coupllectorApp.userProfile.rewardPoints" for="field_rewardPoints">Reward Points</label>
+            <input type="number" class="form-control" name="rewardPoints" id="field_rewardPoints"
+                    ng-model="vm.userProfile.rewardPoints"
+                     />
+        </div>
+
+        <div class="form-group">
+            <label translate="coupllectorApp.userProfile.user" for="field_user">User</label>
+            <select class="form-control" id="field_user" name="user" ng-model="vm.userProfile.userId" ng-options="user.id as user.id for user in vm.users"            >
+                <option value=""></option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label translate="coupllectorApp.userProfile.streetAddress" for="field_streetAddress">Street Address</label>
+            <select class="form-control" id="field_streetAddress" name="streetAddress" ng-model="vm.userProfile.streetAddressId" ng-options="address.id as address.id for address in vm.streetaddresses | orderBy:'id'">
+                <option value=""></option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label translate="coupllectorApp.userProfile.postalAddress" for="field_postalAddress">Postal Address</label>
+            <select class="form-control" id="field_postalAddress" name="postalAddress" ng-model="vm.userProfile.postalAddressId" ng-options="address.id as address.id for address in vm.postaladdresses | orderBy:'id'">
+                <option value=""></option>
+            </select>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="vm.clear()">
+            <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span translate="entity.action.cancel">Cancel</span>
+        </button>
+        <button type="submit" ng-disabled="editForm.$invalid || vm.isSaving" class="btn btn-primary">
+            <span class="glyphicon glyphicon-save"></span>&nbsp;<span translate="entity.action.save">Save</span>
+        </button>
+    </div>
+</form>

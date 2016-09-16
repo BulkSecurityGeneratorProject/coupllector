@@ -1,0 +1,27 @@
+{
+    "coupllectorApp": {
+        "rewardPointHistory" : {
+            "home": {
+                "title": "Reward Point Histories",
+                "createLabel": "Create a new Reward Point History",
+                "createOrEditLabel": "Create or edit a Reward Point History",
+                "search": "Search for Reward Point History"
+            },
+            "created": "A new Reward Point History is created with identifier {{ param }}",
+            "updated": "A Reward Point History is updated with identifier {{ param }}",
+            "deleted": "A Reward Point History is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Reward Point History {{ id }}?"
+            },
+            "detail": {
+                "title": "Reward Point History"
+            },
+            "changedDate": "Changed Date",
+            "changedValue": "Changed Value",
+            "balance": "Balance",
+            "transaction": "Transaction",
+            "comment": "Comment",
+            "user": "User"
+        }
+    }
+}
