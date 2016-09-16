@@ -1,16 +1,14 @@
 package com.coupllector.svc.service.dto;
 
-import java.time.ZonedDateTime;
 import java.io.Serializable;
-import java.util.HashSet;
-import java.util.Set;
+import java.time.ZonedDateTime;
 import java.util.Objects;
 
 
 /**
  * A DTO for the RewardPointHistory entity.
  */
-public class RewardPointHistoryDTO implements Serializable {
+public class RewardPointHistoryDTO extends AbstractAuditingDTO implements Serializable {
 
     private Long id;
 
@@ -26,7 +24,7 @@ public class RewardPointHistoryDTO implements Serializable {
 
 
     private Long userId;
-    
+
     public Long getId() {
         return id;
     }

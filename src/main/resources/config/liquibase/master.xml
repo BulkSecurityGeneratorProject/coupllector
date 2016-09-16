@@ -9,6 +9,7 @@
     <include file="classpath:config/liquibase/changelog/20160916071712_added_entity_Address.xml" relativeToChangelogFile="false"/>
     <include file="classpath:config/liquibase/changelog/20160916071713_added_entity_RewardPointHistory.xml" relativeToChangelogFile="false"/>
     <include file="classpath:config/liquibase/changelog/20160916071714_added_entity_Task.xml" relativeToChangelogFile="false"/>
+    <include file="classpath:config/liquibase/changelog/20160916090930_added_entity_EntityAuditEvent.xml" relativeToChangelogFile="false"/>
     <!-- jhipster-needle-liquibase-add-changelog - JHipster will add liquibase changelogs here -->
     <include file="classpath:config/liquibase/changelog/20160916071711_added_entity_constraints_UserProfile.xml" relativeToChangelogFile="false"/>
     <include file="classpath:config/liquibase/changelog/20160916071713_added_entity_constraints_RewardPointHistory.xml" relativeToChangelogFile="false"/>

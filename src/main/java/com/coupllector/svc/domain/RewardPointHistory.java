@@ -14,7 +14,7 @@ import java.util.Objects;
 @Entity
 @Table(name = "reward_point_history")
 @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
-public class RewardPointHistory implements Serializable {
+public class RewardPointHistory extends AbstractAuditingEntity implements Serializable {
 
     private static final long serialVersionUID = 1L;
 

@@ -9,7 +9,7 @@ import java.util.Objects;
 /**
  * A DTO for the UserProfile entity.
  */
-public class UserProfileDTO implements Serializable {
+public class UserProfileDTO extends AbstractAuditingDTO implements Serializable {
 
     private Long id;
 

@@ -13,7 +13,7 @@ import java.util.Objects;
 @Entity
 @Table(name = "user_profile")
 @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
-public class UserProfile implements Serializable {
+public class UserProfile extends AbstractAuditingEntity implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
