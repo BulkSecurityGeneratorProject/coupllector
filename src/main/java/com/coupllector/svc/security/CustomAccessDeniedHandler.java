@@ -1,16 +1,19 @@
 package com.coupllector.svc.security;
 
-import java.io.IOException;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.security.access.AccessDeniedException;
+import org.springframework.security.web.access.AccessDeniedHandler;
+import org.springframework.security.web.access.AccessDeniedHandlerImpl;
+import org.springframework.security.web.csrf.CsrfException;
+import org.springframework.security.web.csrf.CsrfToken;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
-import org.springframework.security.access.AccessDeniedException;
-import org.springframework.security.web.access.AccessDeniedHandler;
-import org.springframework.security.web.access.AccessDeniedHandlerImpl;
-import org.springframework.security.web.csrf.CsrfException;
+import java.io.IOException;
+import java.util.Optional;
 
 /**
  * An implementation of AccessDeniedHandler by wrapping the AccessDeniedHandlerImpl.
@@ -23,6 +26,7 @@ import org.springframework.security.web.csrf.CsrfException;
  * @see AccessDeniedHandlerImpl
  */
 public class CustomAccessDeniedHandler implements AccessDeniedHandler {
+    private final Logger log = LoggerFactory.getLogger(CustomAccessDeniedHandler.class);
 
     private AccessDeniedHandlerImpl accessDeniedHandlerImpl = new AccessDeniedHandlerImpl();
 
@@ -37,6 +41,14 @@ public class CustomAccessDeniedHandler implements AccessDeniedHandler {
             cookie.setHttpOnly(false);
             cookie.setPath("/");
             response.addCookie(cookie);
+
+            CsrfToken csrfToken = (CsrfToken) request.getAttribute("_csrf");
+            String token = csrfToken.getToken();
+            Optional<String> origin = Optional.ofNullable(request.getHeader("origin"));
+            if (origin.isPresent() && origin.get().equals("file://")) {
+                log.debug("Setting CSRF Token header for JHipster-Ionic app");
+                response.addHeader("X-CSRF-TOKEN-IONIC", token);
+            }
         }
 
         accessDeniedHandlerImpl.handle(request, response, accessDeniedException);
